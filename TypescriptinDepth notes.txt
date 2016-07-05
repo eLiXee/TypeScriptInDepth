@@ -1,0 +1,263 @@
+var 
+-Globally available in the function in which it is declared
+Hoisted to the top of the function
+
+
+let and const 
+-only available in the block in which it is declared
+not hoisted to the top of the block
+
+--Basic Types --
+
+Boolean
+Number
+String
+Array
+Enum
+Any - can be declared as any type / string,numeric,object etc(avoid when possible)
+Void - Function does not return a value
+
+
+Type Interface
+let myString = 'this is a string';
+myString = 42; //Error
+
+function returnNumber(): number{
+return 42;
+}
+
+let anotherString = 'this is also a string';
+anotherString = ReturnNumber(); // Error
+
+Adding type Annotations
+
+
+let arr = allBooks.filter(function(book){
+return book.author === 'Herman Melville';
+});
+
+
+function PublicationMessage(year : number): string{
+return 'Date published:' + year
+
+Optional
+function CreateCustom(name: string, age?: number) {}
+
+function GetBookByTitle(title: string = 'The C Programming Language') {}
+options must be after required params
+
+
+Rest Parameters
+
+IE
+
+function GetBooksReadForCust(name: string, ...bookIDs: number[]) {}
+let books = GetBooksReadForCust('Leigh', 2, 5);
+let books = GetBooksReadForCust('Daniel', 2, 5 , 12, 42);
+
+Collects a group of parameters into a single array
+Denoted with an ellipsis prefix on last parameter 
+
+optional parameters denoted with "?" after parameter name
+must appear after all required parameters
+defaul parameters may be set to a literal value or an expression
+}
+
+denote as elypsis ... 
+
+
+
+Function Overloads
+
+One Symbol Name
+Multiple function types
+One Implementation with type guards
+
+Implementing Function Overloads
+
+function GetTitles(author: string): string[];
+function GetTitles(available: boolean): string[];
+if(typeof bookProperty == 'string'){
+//get books by author, add to foundTitles
+}
+
+else if (typeof bookProperty == 'boolean'){
+//get books by availability, add to foundTitles
+}
+
+return foundTitles;
+}
+
+
+What is a class??
+Template for creating objects
+Provides state storage and behavior
+Encapsulates reusable functionality
+
+Sound Familiar?
+Define types
+properties and methods
+constructors
+access modifiers
+inheritance
+abstract classes
+
+
+Constructors
+
+class ReferenceItem {
+constructor(title: string, publisher?: string){
+//perform initialization here
+}
+}
+let encyclopedia = new ReferenceItem('WorldPedia', 'WorldPub');
+
+
+
+Method named "constructor" - maxiumum of one per class
+use optional parameters to call different ways
+
+
+Properties and Methods
+
+class ReferenceItem{
+numberOfPages: number;
+get editor(): string{
+//custom getter logic goes here, should return a value
+
+
+}
+
+set editor(newEditor: string){
+//custom setter logic goes here
+}
+
+
+Parameter Properties 
+
+class Author {
+name: string;
+constructor(authorName: string){
+name = authorName;
+}
+}
+
+class Author {
+constructor(public name: string) {}
+}
+
+Static Properties
+
+class Library {
+constructor(public name: string) {}
+static description: string = 'A Source of knowledge.';
+
+}
+
+What is a Interface
+Contracts that define types
+Compiler enforces the contract via type checking
+Collection of property and method definitions 
+
+Duck Typing
+"When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck"
+
+interface Duck {
+walk: () => void;
+swim: () => void;
+quack: () => void;
+
+}
+
+
+interface Book{
+id: number;
+title: string;
+author: string;
+pages?: number;
+markDamaged: (reason: string) => void;
+
+}
+
+Defining an interface 
+interface keyword
+list properties with their types
+optional properties denoted with "?"
+provide function signatures - no implementation
+
+
+Inheritance
+	ReferenceItem
+ 	   title
+	   year
+	printItem() 
+Encyclopedia   ---- 	Journal
+edition			contributors
+numberInSet		issueNumber
+
+Extending Classes with Inheritance
+class ReferenceItem{
+title: string;
+printItem(): void {// print something here}
+}
+class Journal extends ReferenceItem {
+constructor() {
+super(); // Key word that refers to parent class
+}
+contributors: string[];
+}
+
+new in ts 1.5
+internal modules became namespaces
+external modules became modules
+support for ecmascript2015 modules
+
+
+Modules 
+Tool For Organizing Code
+Native support in node.js
+browsers support with module loader
+Supports es2015 module syntax
+Facilitates code reuse
+modules are the future!
+
+
+
+NameSpaces
+Tool for organizing code
+No Special Loader Required
+Prevents global namespace pollution
+Best for smallert client applications
+
+
+namespace Membership{
+export function AddMember(name: string) {
+
+//add a new member
+}
+export namespace Cards{
+export function IssueCard(memberNumber: number){
+//Issue new card
+}
+}
+}
+Membership.AddMember('Garrett');
+MemberShip.Cards.IssueCard(1234);
+
+
+Triple slash references
+///<reference path ="membership.ts" />
+let memberName: string = 'elaine';
+let membernumber: number = 789;
+Membership.AddMember(memberName;
+Membership.Cards.IssueCard(memberNumber);
+
+Enchances editor support for referenced files
+Typescript compiler will compile all required references
+Use -outfile compiler option to generate a single js output file
+
+
+
+
+
+
